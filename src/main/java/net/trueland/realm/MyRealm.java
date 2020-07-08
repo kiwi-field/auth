@@ -8,7 +8,6 @@ import net.trueland.repository.ResourceRepository;
 import net.trueland.repository.RoleRepository;
 import net.trueland.repository.UserRepository;
 import net.trueland.service.ShiroService;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

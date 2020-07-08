@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * Shiro自定义auth过滤器
  *
- * @Author 大誌
+ * @Author dengxiaoyu
  * @Date 2019/3/31 10:38
  * @Version 1.0
  */

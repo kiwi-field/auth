@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * 登录传输类
+ * @author dengxiaoyu
  */
 @Data
 public class LoginDTO {
