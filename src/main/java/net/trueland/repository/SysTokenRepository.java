@@ -10,4 +10,17 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @Author dengxiaoyu
  */
 public interface SysTokenRepository extends JpaRepository<SysToken, Integer>, JpaSpecificationExecutor<SysToken> {
+    /**
+     * 通过token查找
+     * @param token
+     * @return
+     */
+    SysToken findByToken(String token);
+
+    /**
+     * 通过userID查找
+     * @param userId
+     * @return
+     */
+    SysToken findByUserId(Integer userId);
 }

@@ -2,13 +2,15 @@ package net.trueland.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 /**
-*  t_token
-* @author 大狼狗 2020-07-07
+*  t_sys_token
+* @author dengxiaoyu
 */
 @Entity
 @Data
@@ -17,7 +19,6 @@ public class SysToken {
 
 
     @Id
-    @GeneratedValue
     /**
     * 用户id
     */
@@ -28,7 +29,7 @@ public class SysToken {
     * 过期时间
     */
     @Column(name = "expire_time")
-    private Date expireTime;
+    private LocalDateTime expireTime;
 
     /**
     * token
@@ -40,6 +41,6 @@ public class SysToken {
     * 更新时间
     */
     @Column(name = "update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
 }
