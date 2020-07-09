@@ -15,7 +15,7 @@ mysql8.0以上
  |marry|普通用户|select|
  **步骤2** : 
     访问swagger http://localhost:8090/swagger-ui.html
-    ![image](doc/pic/swagger.png)   
+    ![image](https://github.com/kiwi-field/auth/blob/github/image/swagger.png)   
   **步骤3**:
     通过登录接口,获取一个Token，默认12小时失效<br>
   **步骤4**:
