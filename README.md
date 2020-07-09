@@ -14,7 +14,7 @@ mysql8.0以上
  |jack|管理员|select;save;update|
  |marry|普通用户|select|
  **步骤2** : 
-    访问swagger http://localhost:8090/swagger-ui.html
+    访问swagger http://localhost:8090/swagger-ui.html<br>
     ![image](https://github.com/MaiEmily/map/blob/master/public/image/20190528145810708.png)
   **步骤3**:
     通过登录接口,获取一个Token，默认12小时失效<br>
