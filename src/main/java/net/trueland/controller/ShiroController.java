@@ -50,7 +50,7 @@ public class ShiroController {
         String password = loginDTO.getPassword();
 
         //用户信息
-        User user = shiroService.findByUsername(username);
+        User user = shiroService.findByUsername(username, loginDTO.getCompanyId());
         //账号不存在、密码错误
         if (user == null || !user.getPassword().equals(password)) {
             result.put("status", 400);

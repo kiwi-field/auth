@@ -20,6 +20,7 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer>, Jp
      * @return
      */
     @Query(value = "SELECT re.* FROM t_role r, t_role_resource rr, t_resource re WHERE rr.`role_id` = r.`id` AND rr" +
-            ".`resource_id` = re.`id` and r.`id`=?1", nativeQuery = true)
-    List<Resource> findByRoleId(int roleId);
+            ".`resource_id` = re.`id` and r.`id`=?1 and r.company_id = ?2" +
+            " and re.company_id = ?2", nativeQuery = true)
+    List<Resource> findByRoleId(int roleId, int companyId);
 }

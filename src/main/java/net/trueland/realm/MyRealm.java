@@ -46,11 +46,11 @@ public class MyRealm extends AuthorizingRealm{
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         User user = (User) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        List<Role> roleList = roleRepository.findByUserId(user.getId());
+        List<Role> roleList = roleRepository.findByUserId(user.getId(), user.getCompanyId());
         Set<String> roles = new HashSet<String>();
         for (Role role : roleList) {
             roles.add(role.getName());
-            List<Resource> resourceList = resourceRepository.findByRoleId(role.getId());
+            List<Resource> resourceList = resourceRepository.findByRoleId(role.getId(), user.getCompanyId());
             for (Resource resource : resourceList) {
                 info.addStringPermission(resource.getPermission());
             }

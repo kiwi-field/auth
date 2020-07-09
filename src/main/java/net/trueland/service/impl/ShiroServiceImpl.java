@@ -42,8 +42,8 @@ public class ShiroServiceImpl implements ShiroService {
      * @return User
      */
     @Override
-    public User findByUsername(String username) {
-        User user = userRepository.findByUserName(username);
+    public User findByUsername(String username, Integer companyId) {
+        User user = userRepository.findByUserName(username, companyId);
         return user;
     }
 
@@ -55,7 +55,7 @@ public class ShiroServiceImpl implements ShiroService {
      *@return Result
      */
     public Map<String, Object> createToken(Integer userId) {
-        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<>(2);
         //生成一个token
         String token = TokenGenerator.generateValue();
         //当前时间

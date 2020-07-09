@@ -14,20 +14,14 @@ import java.util.List;
  */
 public interface RoleRepository extends JpaRepository<Role, Integer>, JpaSpecificationExecutor<Role> {
 
-	/**
-	 * 根据用户id查角色集合
-	 * @param id
-	 * @return
-	 */
+    /**
+     * 根据用户id查角色集合
+     *
+     * @param userId
+     * @param companyId
+     * @return
+     */
     @Query(value = "SELECT r.* FROM t_user u,t_role r,t_user_role ur WHERE ur.`user_id`=u.`id` " +
-            "AND ur.`role_id`=r.`id` AND u.`id`=?1", nativeQuery = true)
-	List<Role> findByUserId(Integer id);
-
-	/**
-	 * 根据角色名查找角色实体
-	 * @param roleName
-	 * @return
-	 */
-	@Query(value="select * from t_role where name=?1",nativeQuery=true)
-	Role findByRoleName(String roleName);
+            "AND ur.`role_id`=r.`id` AND u.`id`=?1 and r.company_id = ?2 and u.company_id = ?2", nativeQuery = true)
+    List<Role> findByUserId(Integer userId, Integer companyId);
 }

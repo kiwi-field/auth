@@ -18,7 +18,7 @@ public interface ShiroService {
       * @param username
       * @return
       */
-     User findByUsername(String username);
+     User findByUsername(String username, Integer companyId);
 
      /**
       * create token by userId

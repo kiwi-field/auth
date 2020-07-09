@@ -32,4 +32,7 @@ public class Resource {
      */
     @Column(name = "permission")
     private String permission;
+
+    @Column(name = "company_id")
+    private Integer companyId;
 }

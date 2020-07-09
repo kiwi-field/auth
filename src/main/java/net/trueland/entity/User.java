@@ -49,6 +49,9 @@ public class User {
 	@Column(length=1000)
 	private String remarks;
 
+	@Column(name = "company_id")
+	private Integer companyId;
+
     /**
      * 所拥有的角色
      */
