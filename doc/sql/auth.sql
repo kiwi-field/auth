@@ -11,7 +11,7 @@
  Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 09/07/2020 15:26:54
+ Date: 09/07/2020 17:54:14
 */
 
 SET NAMES utf8mb4;
@@ -35,6 +35,11 @@ CREATE TABLE `t_company`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '企业信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of t_company
+-- ----------------------------
+INSERT INTO `t_company` VALUES (1, '上海测试信息有限公司', '测试公司', '上海', '邓小宇', '17681880376', '909421773@qq.com', '2020-07-09 16:51:05', 0);
+
+-- ----------------------------
 -- Table structure for t_resource
 -- ----------------------------
 DROP TABLE IF EXISTS `t_resource`;
@@ -42,16 +47,17 @@ CREATE TABLE `t_resource`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资源名称',
   `permission` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限标识',
+  `company_id` int(11) NOT NULL COMMENT '公司id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '资源表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_resource
 -- ----------------------------
-INSERT INTO `t_resource` VALUES (1, 'select', 'select');
-INSERT INTO `t_resource` VALUES (2, 'update', 'update');
-INSERT INTO `t_resource` VALUES (3, 'delete', 'delete');
-INSERT INTO `t_resource` VALUES (4, 'save', 'save');
+INSERT INTO `t_resource` VALUES (1, 'select', 'select', 1);
+INSERT INTO `t_resource` VALUES (2, 'update', 'update', 1);
+INSERT INTO `t_resource` VALUES (3, 'delete', 'delete', 1);
+INSERT INTO `t_resource` VALUES (4, 'save', 'save', 1);
 
 -- ----------------------------
 -- Table structure for t_role
@@ -63,15 +69,16 @@ CREATE TABLE `t_role`  (
   `remarks` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `company_id` int(11) NOT NULL COMMENT '公司id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-INSERT INTO `t_role` VALUES (1, '超级管理员', '管理员 最高权限', NULL, NULL);
-INSERT INTO `t_role` VALUES (2, '管理员', '主管', NULL, NULL);
-INSERT INTO `t_role` VALUES (3, '普通用户', '普通用户', NULL, NULL);
+INSERT INTO `t_role` VALUES (1, '超级管理员', '管理员 最高权限', NULL, NULL, 1);
+INSERT INTO `t_role` VALUES (2, '管理员', '主管', NULL, NULL, 1);
+INSERT INTO `t_role` VALUES (3, '普通用户', '普通用户', NULL, NULL, 1);
 
 -- ----------------------------
 -- Table structure for t_role_resource
@@ -112,7 +119,7 @@ CREATE TABLE `t_sys_token`  (
 -- ----------------------------
 -- Records of t_sys_token
 -- ----------------------------
-INSERT INTO `t_sys_token` VALUES (1, '2020-07-10 03:24:01', '197f92b9c3f65a55fc50c9cbd27dc9ff', '2020-07-09 15:24:01');
+INSERT INTO `t_sys_token` VALUES (1, '2020-07-10 05:23:02', 'ba37d98425a962bca382cbd3b4b8a42e', '2020-07-09 17:23:02');
 
 -- ----------------------------
 -- Table structure for t_user
@@ -137,9 +144,9 @@ CREATE TABLE `t_user`  (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (1, '123', '管理员', '王大陆', 'admin', NULL, NULL, 0, 0, NULL, NULL, 1);
-INSERT INTO `t_user` VALUES (2, '123', '主管', '王大锤', 'jack', NULL, NULL, 0, 0, NULL, NULL, 1);
-INSERT INTO `t_user` VALUES (3, '123', '销售经理', '玛丽', 'marry', NULL, NULL, 0, 0, NULL, NULL, 1);
+INSERT INTO `t_user` VALUES (1, '123', '管理员', '王大陆', 'admin', NULL, NULL, 0, 1, NULL, NULL, 1);
+INSERT INTO `t_user` VALUES (2, '123', '主管', '王大锤', 'jack', NULL, NULL, 0, 1, NULL, NULL, 1);
+INSERT INTO `t_user` VALUES (3, '123', '销售经理', '玛丽', 'marry', NULL, NULL, 0, 1, NULL, NULL, 1);
 
 -- ----------------------------
 -- Table structure for t_user_role
