@@ -81,8 +81,10 @@ public class AuthFilter extends AuthenticatingFilter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtil.getOrigin());
+            // 解决response乱码
             httpResponse.setCharacterEncoding("UTF-8");
-            Map<String, Object> result = new HashMap<>();
+            httpResponse.setHeader("Content-type", "text/html;charset=UTF-8");
+            Map<String, Object> result = new HashMap<>(2);
             result.put("status", 403);
             result.put("msg", "请先登录");
             String json = MAPPER.writeValueAsString(result);

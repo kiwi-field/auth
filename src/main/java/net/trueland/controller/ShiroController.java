@@ -9,7 +9,6 @@ import net.trueland.service.ShiroService;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -75,6 +74,15 @@ public class ShiroController {
         shiroService.logout(token);
         result.put("status", 200);
         result.put("msg", "您已安全退出系统");
+        return result;
+    }
+
+    @ApiOperation(value = "hello", notes = "参数:token")
+    @PostMapping("/sys/hello")
+    public Map<String, Object> hello(@RequestHeader("token")String token) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("status", 200);
+        result.put("msg", "您已登录，hello");
         return result;
     }
 }

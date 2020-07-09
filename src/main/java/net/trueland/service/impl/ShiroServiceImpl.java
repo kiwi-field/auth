@@ -21,7 +21,9 @@ import java.util.Optional;
  */
 @Service
 public class ShiroServiceImpl implements ShiroService {
-    //12小时后失效
+    /**
+     * 12小时后失效
+     */
     private final static int EXPIRE = 12;
 
 
